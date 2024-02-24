@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Ron blanco",
+    "category": "Alcohol"
+  },
+  {
+    "name": "Menta",
+    "category": "Adereso"
+  },
+  {
+    "name": "Azúcar",
+    "category": "Adereso"
+  },
+  {
+    "name": "Jugo de limón",
+    "category": "Jugo"
+  },
+  {
+    "name": "Vodka",
+    "category": "Alcohol"
+  },
+  {
+    "name": "Triple sec",
+    "category": "Alcohol"
+  },
+  {
+    "name": "Jugo de arándano",
+    "category": "Jugo"
+  },
+  {
+    "name": "Cachaça",
+    "category": "Alcohol"
+  },
+  {
+    "name": "Lima",
+    "category": "Jugo"
+  },
+  {
+    "name": "Tequila",
+    "category": "Alcohol"
+  }
+]

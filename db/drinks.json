@@ -1,0 +1,109 @@
+[
+    {
+      "nombre": "Mojito",
+      "descripcion": "Refrescante cóctel cubano con base de ron blanco, menta, limón, azúcar y soda.",
+      "categorie":"Cócteles",
+      "ingredientes": [
+        {
+          "nombre": "Ron blanco",
+          "cantidad": "2 oz"
+        },
+        {
+          "nombre": "Menta fresca",
+          "cantidad": "8 hojas"
+        },
+        {
+          "nombre": "Azúcar",
+          "cantidad": "2 cucharaditas"
+        },
+        {
+          "nombre": "Jugo de limón",
+          "cantidad": "1 oz"
+        },
+        {
+          "nombre": "Soda",
+          "cantidad": "2 oz"
+        }
+      ]
+    },
+    {
+      "nombre": "Cosmopolitan",
+      "descripcion": "Cóctel clásico con vodka, triple sec, jugo de arándano y jugo de limón.",
+      "categorie":"Cócteles",
+      "ingredientes": [
+        {
+          "nombre": "Vodka",
+          "cantidad": "1 1/2 oz"
+        },
+        {
+          "nombre": "Triple sec",
+          "cantidad": "1 oz"
+        },
+        {
+          "nombre": "Jugo de arándano",
+          "cantidad": "1/2 oz"
+        },
+        {
+          "nombre": "Jugo de limón",
+          "cantidad": "1/2 oz"
+        }
+      ]
+    },
+    {
+        "nombre": "Daiquiri",
+        "descripcion": "Cóctel refrescante y equilibrado con ron blanco, jugo de limón y sirope de azúcar.",
+        "categorie":"Cócteles",
+        "ingredientes": [
+          {
+            "nombre": "Ron blanco",
+            "cantidad": "2 oz"
+          },
+          {
+            "nombre": "Jugo de limón",
+            "cantidad": "1 oz"
+          },
+          {
+            "nombre": "Azúcar",
+            "cantidad": "3/4 oz"
+          }
+        ]
+      },
+      {
+        "nombre": "Caipirinha",
+        "descripcion": "Cóctel brasileño con cachaça, lima y azúcar, servido con hielo picado.",
+        "categorie":"Cócteles",
+        "ingredientes": [
+          {
+            "nombre": "Cachaça",
+            "cantidad": "2 oz"
+          },
+          {
+            "nombre": "Lima",
+            "cantidad": "1/2 lima cortada en trozos"
+          },
+          {
+            "nombre": "Azúcar",
+            "cantidad": "2 cucharaditas"
+          }
+        ]
+      },
+      {
+        "nombre": "Margarita",
+        "descripcion": "Cóctel mexicano con tequila, triple sec y jugo de lima, servido con sal en el borde del vaso.",
+        "categorie":"Cócteles",
+        "ingredientes": [
+          {
+            "nombre": "Tequila",
+            "cantidad": "1 1/2 oz"
+          },
+          {
+            "nombre": "Triple sec",
+            "cantidad": "1 oz"
+          },
+          {
+            "nombre": "Lima",
+            "cantidad": "3/4 oz"
+          }
+        ]
+      }
+  ]

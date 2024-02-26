@@ -1,108 +1,108 @@
 [
     {
-      "nombre": "Mojito",
+      "name": "Mojito",
       "descripcion": "Refrescante cóctel cubano con base de ron blanco, menta, limón, azúcar y soda.",
-      "categorie":"Cócteles",
-      "ingredientes": [
+      "category":"Cócteles",
+      "ingredients": [
         {
-          "nombre": "Ron blanco",
-          "cantidad": "2 oz"
+          "name": "Ron blanco",
+          "amount": "2 oz"
         },
         {
-          "nombre": "Menta fresca",
-          "cantidad": "8 hojas"
+          "name": "Menta fresca",
+          "amount": "8 hojas"
         },
         {
-          "nombre": "Azúcar",
-          "cantidad": "2 cucharaditas"
+          "name": "Azúcar",
+          "amount": "2 cucharaditas"
         },
         {
-          "nombre": "Jugo de limón",
-          "cantidad": "1 oz"
+          "name": "Jugo de limón",
+          "amount": "1 oz"
         },
         {
-          "nombre": "Soda",
-          "cantidad": "2 oz"
+          "name": "Soda",
+          "amount": "2 oz"
         }
       ]
     },
     {
-      "nombre": "Cosmopolitan",
+      "name": "Cosmopolitan",
       "descripcion": "Cóctel clásico con vodka, triple sec, jugo de arándano y jugo de limón.",
-      "categorie":"Cócteles",
-      "ingredientes": [
+      "category":"Cócteles",
+      "ingredients": [
         {
-          "nombre": "Vodka",
-          "cantidad": "1 1/2 oz"
+          "name": "Vodka",
+          "amount": "1 1/2 oz"
         },
         {
-          "nombre": "Triple sec",
-          "cantidad": "1 oz"
+          "name": "Triple sec",
+          "amount": "1 oz"
         },
         {
-          "nombre": "Jugo de arándano",
-          "cantidad": "1/2 oz"
+          "name": "Jugo de arándano",
+          "amount": "1/2 oz"
         },
         {
-          "nombre": "Jugo de limón",
-          "cantidad": "1/2 oz"
+          "name": "Jugo de limón",
+          "amount": "1/2 oz"
         }
       ]
     },
     {
-        "nombre": "Daiquiri",
+        "name": "Daiquiri",
         "descripcion": "Cóctel refrescante y equilibrado con ron blanco, jugo de limón y sirope de azúcar.",
-        "categorie":"Cócteles",
-        "ingredientes": [
+        "category":"Cócteles",
+        "ingredients": [
           {
-            "nombre": "Ron blanco",
-            "cantidad": "2 oz"
+            "name": "Ron blanco",
+            "amount": "2 oz"
           },
           {
-            "nombre": "Jugo de limón",
-            "cantidad": "1 oz"
+            "name": "Jugo de limón",
+            "amount": "1 oz"
           },
           {
-            "nombre": "Azúcar",
-            "cantidad": "3/4 oz"
+            "name": "Azúcar",
+            "amount": "3/4 oz"
           }
         ]
       },
       {
-        "nombre": "Caipirinha",
+        "name": "Caipirinha",
         "descripcion": "Cóctel brasileño con cachaça, lima y azúcar, servido con hielo picado.",
-        "categorie":"Cócteles",
-        "ingredientes": [
+        "category":"Cócteles",
+        "ingredients": [
           {
-            "nombre": "Cachaça",
-            "cantidad": "2 oz"
+            "name": "Cachaça",
+            "amount": "2 oz"
           },
           {
-            "nombre": "Lima",
-            "cantidad": "1/2 lima cortada en trozos"
+            "name": "Lima",
+            "amount": "1/2 lima cortada en trozos"
           },
           {
-            "nombre": "Azúcar",
-            "cantidad": "2 cucharaditas"
+            "name": "Azúcar",
+            "amount": "2 cucharaditas"
           }
         ]
       },
       {
-        "nombre": "Margarita",
+        "name": "Margarita",
         "descripcion": "Cóctel mexicano con tequila, triple sec y jugo de lima, servido con sal en el borde del vaso.",
-        "categorie":"Cócteles",
-        "ingredientes": [
+        "category":"Cócteles",
+        "ingredients": [
           {
-            "nombre": "Tequila",
-            "cantidad": "1 1/2 oz"
+            "name": "Tequila",
+            "amount": "1 1/2 oz"
           },
           {
-            "nombre": "Triple sec",
-            "cantidad": "1 oz"
+            "name": "Triple sec",
+            "amount": "1 oz"
           },
           {
-            "nombre": "Lima",
-            "cantidad": "3/4 oz"
+            "name": "Lima",
+            "amount": "3/4 oz"
           }
         ]
       }

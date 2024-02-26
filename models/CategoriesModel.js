@@ -19,4 +19,20 @@ export default class CategoriesModel
             throw new Error(`we can't found the categorie with id: ${id}`)
        }
     }
+
+    static async create({data})
+    {
+        const newCategory = {
+        name: data.name,
+        description: data.description
+        }
+
+        try {
+            const category =  await categoriesDB.insertOne(newCategory)
+            newCategory._id = category.insertedId
+            return newCategory
+        } catch (error) {
+            throw Error(`La categoria no pudo ser agregada: ${error}`)
+        }
+    }
 }

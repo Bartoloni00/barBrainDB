@@ -19,4 +19,22 @@ export default class DrinksModel
             throw new Error(`we can't found the drink with id: ${id}`)
        }
     }
+
+    static async create({data})
+    {
+        const newDrink = {
+            name: data.name,
+            descripcion: data.descripcion,
+            category: data.category,
+            ingredients: [...data.ingredients]
+          }
+
+        try {
+            const drink = await drinksDB.insertOne(newDrink)
+            newDrink._id = drink.insertedId
+            return newDrink
+        } catch (error) {
+            throw Error(`El trago no pudo ser agregado: ${error}`)
+        }
+    }
 }

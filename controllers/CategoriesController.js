@@ -21,4 +21,11 @@ export default class CategoriesController
                 res.status(404).json({Error: err.message})
             })
     }
+
+    static async create(req, res)
+    {
+        CategoriesModel.create({data: req.body})
+            .then(category => res.status(200).send(category))
+            .catch(err => res.status(500).json({Error: err.message}))
+    }
 }

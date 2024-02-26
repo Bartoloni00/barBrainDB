@@ -16,4 +16,11 @@ export default class IngredientsController
             .then(ingredient => res.status(200).send(ingredient))
             .catch(err => res.status(404).json({Error: err.message}))
     }
+
+    static async create(req, res)
+    {
+        IngredientsModel.create({data: req.body})
+            .then(ingredient => res.status(200).send(ingredient))
+            .catch(err => res.status(500).json({Error: err.message}))
+    }
 }

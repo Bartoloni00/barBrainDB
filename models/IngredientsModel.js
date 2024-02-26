@@ -19,4 +19,19 @@ export default class IngredientsModel
             throw new Error(`we can't found the ingredient with id: ${id}`)
        }
     }
+
+    static async create({data})
+    {
+        const newIngredient = {
+            name: data.name,
+            category: data.category
+        }
+        try {
+            const ingredient = await ingredientDB.insertOne(newIngredient)
+            newIngredient._id = ingredient.insertedId
+            return newIngredient
+        } catch (error) {
+            throw Error(`El ingrediente no pudo ser agregado: ${error}`)
+        }
+    }
 }

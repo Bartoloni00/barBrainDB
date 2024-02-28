@@ -28,4 +28,12 @@ export default class CategoriesController
             .then(category => res.status(200).send(category))
             .catch(err => res.status(500).json({Error: err.message}))
     }
+
+    static async delete(req, res)
+    {
+        const id = req.params.id
+        CategoriesModel.delete({id:id})
+            .then(category => res.status(204).send(category))
+            .catch(err => res.status(500).json({Error: err.message}))
+    }
 }

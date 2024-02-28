@@ -7,5 +7,6 @@ const IngredientsRoutes = express.Router()
 IngredientsRoutes.get('/ingredients/', IngredientsController.getAll)
 IngredientsRoutes.get('/ingredients/:id', IngredientsController.getById)
 IngredientsRoutes.post('/ingredients/',IngredientsMiddleware.create, IngredientsController.create)
+IngredientsRoutes.delete('/ingredients/:id',IngredientsController.delete)
 
 export default IngredientsRoutes

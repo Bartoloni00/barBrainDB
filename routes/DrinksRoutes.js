@@ -9,8 +9,9 @@ const DrinksRoutes = express.Router()
 DrinksRoutes.get('/drinks/',DrinksController.getAll)
 DrinksRoutes.get('/drinks/:id',DrinksController.getById)
 DrinksRoutes.post('/drinks/',[drinksMiddleware.create],DrinksController.create)
+DrinksRoutes.delete('/drinks/:id',DrinksController.delete)
 
-// TODO: realizar los create, delete y patch
+// TODO: realizar los patch
 
 DrinksRoutes.use(CategoriesRoutes)
 DrinksRoutes.use(IngredientsRoutes)

@@ -31,7 +31,18 @@ export default class IngredientsModel
             newIngredient._id = ingredient.insertedId
             return newIngredient
         } catch (error) {
-            throw Error(`El ingrediente no pudo ser agregado: ${error}`)
+            throw new Error(`El ingrediente no pudo ser agregado: ${error}`)
+        }
+    }
+
+    static async delete({id})
+    {
+        try {
+            await ingredientDB.deleteOne({_id: new ObjectId(id)})
+            // este return no se muestra porque el status es 204(no content)
+            return {'message': `El ingrediente con el id: ${id} fue eliminado exitosamente.`}
+        } catch (error) {
+            throw new Error(`El ingrediente no pudo ser eliminado: ${error}`)
         }
     }
 }

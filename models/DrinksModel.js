@@ -37,4 +37,15 @@ export default class DrinksModel
             throw Error(`El trago no pudo ser agregado: ${error}`)
         }
     }
+
+    static async delete({id})
+    {
+        try {
+            await drinksDB.deleteOne({_id: new ObjectId(id)})
+            // este return no se muestra porque el status es 204(no content)
+            return {'message': `El trago con el id: ${id} fue eliminado exitosamente.`}
+        } catch (error) {
+            throw new Error(`El trago no pudo ser eliminado: ${error}`)
+        }
+    }
 }

@@ -20,7 +20,15 @@ export default class IngredientsController
     static async create(req, res)
     {
         IngredientsModel.create({data: req.body})
-            .then(ingredient => res.status(200).send(ingredient))
+            .then(ingredient => res.status(201).send(ingredient))
+            .catch(err => res.status(500).json({Error: err.message}))
+    }
+
+    static async delete(req, res)
+    {
+        const id = req.params.id
+        IngredientsModel.delete({id:id})
+            .then(ingredient => res.status(204).send(ingredient))
             .catch(err => res.status(500).json({Error: err.message}))
     }
 }

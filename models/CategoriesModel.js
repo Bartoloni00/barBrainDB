@@ -35,4 +35,15 @@ export default class CategoriesModel
             throw Error(`La categoria no pudo ser agregada: ${error}`)
         }
     }
+
+    static async delete({id})
+    {
+        try {
+            await categoriesDB.deleteOne({_id: new ObjectId(id)})
+            // este return no se muestra porque el status es 204(no content)
+            return {'message': `La categoria con el id: ${id} fue eliminada exitosamente.`}
+        } catch (error) {
+            throw new Error(`La categoria no pudo ser eliminada: ${error}`)
+        }
+    }
 }

@@ -26,7 +26,10 @@ export default class DrinksController
 
     static async delete(req, res)
     {
-
+        const id = req.params.id
+        DrinksModel.delete({id:id})
+            .then(drink => res.status(204).send(drink))
+            .catch(err=> res.status(500).json({Error: err.message}))
     }
     
     static async update(req, res)

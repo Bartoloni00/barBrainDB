@@ -31,4 +31,14 @@ export default class IngredientsController
             .then(ingredient => res.status(204).send(ingredient))
             .catch(err => res.status(500).json({Error: err.message}))
     }
+
+    static async update(req, res)
+    {
+        const id = req.params.id
+        const updatedIngredient = req.body
+
+        IngredientsModel.update({id: id,data: updatedIngredient})
+            .then(ingredient => res.status(202).send(ingredient))
+            .catch(err => res.status(500).json({Error: err.message}))
+    }
 }

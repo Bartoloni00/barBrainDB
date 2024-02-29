@@ -45,4 +45,14 @@ export default class IngredientsModel
             throw new Error(`El ingrediente no pudo ser eliminado: ${error}`)
         }
     }
+
+    static async update({id,data})
+    {
+        try {
+            await ingredientDB.updateOne({_id: new ObjectId(id)}, {$set: data})
+            return {"message": `Èl ingrediente con el id: ${id} fue actualizado correctamente.`, "newData": data}
+        } catch (error) {
+            throw new Error(`El ingrediente no pudo ser actualizado: ${error}`)
+        }
+    }
 }

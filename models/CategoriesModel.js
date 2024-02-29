@@ -46,4 +46,14 @@ export default class CategoriesModel
             throw new Error(`La categoria no pudo ser eliminada: ${error}`)
         }
     }
+
+    static async update({id, data})
+    {
+        try {
+            await categoriesDB.updateOne({_id: new ObjectId(id)},{$set: data})
+            return {"message": `La categoria con el id: ${id} fue actualizada correctamente.`, "newData": data}
+        } catch (error) {
+            throw new Error(`La categoria no pudo ser actualizada: ${error}`)
+        }
+    }
 }

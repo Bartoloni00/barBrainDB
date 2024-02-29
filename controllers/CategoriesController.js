@@ -36,4 +36,14 @@ export default class CategoriesController
             .then(category => res.status(204).send(category))
             .catch(err => res.status(500).json({Error: err.message}))
     }
+
+    static async update(req, res)
+    {
+        const id = req.params.id
+        const updatedCategory = req.body
+
+        CategoriesModel.update({id: id, data: updatedCategory})
+            .then(category => res.status(202).send(category))
+            .catch(err => res.status(500).json({Error: err.message}))
+    }
 }

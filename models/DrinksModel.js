@@ -16,7 +16,7 @@ export default class DrinksModel
         try {
             return drinksDB.findOne({_id: new ObjectId(id)})
        } catch (error) {
-            throw new Error(`we can't found the drink with id: ${id}`)
+            throw new Error(`No logramos encontrar el trago con el id: ${id}`)
        }
     }
 
@@ -46,6 +46,16 @@ export default class DrinksModel
             return {'message': `El trago con el id: ${id} fue eliminado exitosamente.`}
         } catch (error) {
             throw new Error(`El trago no pudo ser eliminado: ${error}`)
+        }
+    }
+
+    static async update({id, data})
+    {
+        try {
+            await drinksDB.updateOne({_id: new ObjectId(id)},{$set: data})
+            return {"message": `El trago con el id: ${id} fue actualizado correctamente.`, "newData": data}
+        } catch (error) {
+            throw new Error(`El trago no pudo ser actualizado: ${error}`)
         }
     }
 }

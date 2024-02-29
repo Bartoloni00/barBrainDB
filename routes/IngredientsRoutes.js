@@ -8,5 +8,6 @@ IngredientsRoutes.get('/ingredients/', IngredientsController.getAll)
 IngredientsRoutes.get('/ingredients/:id', IngredientsController.getById)
 IngredientsRoutes.post('/ingredients/',IngredientsMiddleware.create, IngredientsController.create)
 IngredientsRoutes.delete('/ingredients/:id',IngredientsController.delete)
+IngredientsRoutes.patch('/ingredients/:id',[IngredientsMiddleware.update],IngredientsController.update)
 
 export default IngredientsRoutes

@@ -34,6 +34,11 @@ export default class DrinksController
     
     static async update(req, res)
     {
-        
+        const id = req.params.id
+        const updatedDrink = req.body
+
+        DrinksModel.update({id: id, data: updatedDrink})
+            .then(drink => res.status(202).send(drink))
+            .catch(err => res.status(500).json({Error: err.message}))
     }
 }

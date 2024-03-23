@@ -23,11 +23,8 @@ export default class DrinksModel
     static async create({data})
     {
         const newDrink = {
-            name: data.name,
-            descripcion: data.descripcion,
-            category: data.category,
-            ingredients: [...data.ingredients]
-          }
+            ...data
+        }
 
         try {
             const drink = await drinksDB.insertOne(newDrink)

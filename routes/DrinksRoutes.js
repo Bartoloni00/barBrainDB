@@ -4,11 +4,32 @@ import CategoriesRoutes from "./CategoriesRoutes.js"
 import IngredientsRoutes from "./ingredientsRoutes.js"
 import drinksMiddleware from "../middlewares/drinksMiddleware.js"
 
+import multer from 'multer'
+import ImageMiddleware from "../middlewares/imageMiddleware.js"
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) 
+    {
+        cb(null, 'uploads/drinks')
+    },
+    filename: function (req, file, cb)
+    {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, file.fieldname + '-' + uniqueSuffix)
+    }
+})
+
+const upload = multer({storage})
+
 const DrinksRoutes = express.Router()
 
 DrinksRoutes.get('/drinks/',DrinksController.getAll)
 DrinksRoutes.get('/drinks/:id',DrinksController.getById)
-DrinksRoutes.post('/drinks/',[drinksMiddleware.create],DrinksController.create)
+DrinksRoutes.post('/drinks/',[
+    upload.single('cover'),
+    ImageMiddleware.resizeDrinkImage,
+    drinksMiddleware.create,
+],DrinksController.create)
 DrinksRoutes.delete('/drinks/:id',DrinksController.delete)
 DrinksRoutes.patch('/drinks/:id',[drinksMiddleware.update],DrinksController.update)
 

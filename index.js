@@ -12,6 +12,7 @@ app.use(express.json()) // esto es estrictamente necesario para que nuestra api 
 app.use(cors())
 
 app.use(DrinksRoutes)
+app.use('/uploads',[],express.static('uploads'))
 
 app.listen(port,() => {
     console.log(`App listening on port http://localhost:${port}`)

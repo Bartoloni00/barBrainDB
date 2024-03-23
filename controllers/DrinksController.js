@@ -19,7 +19,21 @@ export default class DrinksController
     
     static async create(req, res)
     {
-        DrinksModel.create({data: req.body})
+        // console.log('entro al controlador', req.file.path);
+        let newDrink
+        if(req.file)
+        {
+            newDrink = {
+                ...req.body,
+                cover: req.file.path
+            }
+        } else {
+            newDrink = {
+                ...req.body,
+            }
+        }
+
+        DrinksModel.create({data: newDrink})
             .then(drink => res.status(200).send(drink))
             .catch(err => res.status(500).json({Error: err.message}))
     }

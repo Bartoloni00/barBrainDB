@@ -9,7 +9,7 @@ export default class drinksMiddleware
                 req.body = drink
                 next()
             } )
-            .catch(error => res.status(500).json(error))
+            .catch(error => res.status(422).json(error))
     }
 
     static async update(req, res, next)
@@ -19,6 +19,6 @@ export default class drinksMiddleware
                 req.body = drink
                 next()
             })
-            .catch(error => res.status(500).json(error))
+            .catch(error => res.status(422).json(error))
     }
 }

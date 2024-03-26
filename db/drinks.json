@@ -105,5 +105,25 @@
             "amount": "3/4 oz"
           }
         ]
+      },
+      {
+        "name": "Dry Martini",
+        "descripcion": "Elegante y clásico cóctel compuesto por ginebra y vermut seco, usualmente adornado con una aceituna o twist de limón. Para prepararlo, llena un vaso mezclador con hielo y añade la ginebra y el vermut seco. Revuelve suavemente hasta que se enfríe y luego cuela la mezcla en una copa de martini previamente enfriada. Adorna con una aceituna o twist de limón, según tu preferencia.",
+        "category": "Cócteles",
+        "ingredients": [
+          {
+            "name": "Ginebra",
+            "amount": "2.5 oz"
+          },
+          {
+            "name": "Vermut seco",
+            "amount": "0.5 oz"
+          },
+          {
+            "name": "Aceituna o twist de limón",
+            "amount": "Para decorar"
+          }
+        ]
       }
+      
   ]

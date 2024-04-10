@@ -13,7 +13,10 @@ export default class DrinksController
     {
         const drinkId = req.params.id
         DrinksModel.getById({id: drinkId})
-            .then(drink => res.status(200).send(drink))
+            .then(drink => { 
+                if(!drink) res.status(404).json({Error:`No logramos encontrar el trago con el id: ${id}`})
+                res.status(200).send(drink)
+            })
             .catch(err => res.status(404).json({Error: err.message}))
     }
     

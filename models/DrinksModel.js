@@ -1,4 +1,5 @@
 import { MongoClient, ObjectId } from "mongodb"
+import {deleteFile} from '../services/fs.js'
 
 const client = new MongoClient(process.env.CONNECTION_DB)
 const db = client.db(process.env.NAME_DB)
@@ -38,7 +39,11 @@ export default class DrinksModel
     static async delete({id})
     {
         try {
+            const drinkDeleted = await drinksDB.findOne({_id: new ObjectId(id)})
+
             await drinksDB.deleteOne({_id: new ObjectId(id)})
+
+            if (drinkDeleted.cover) await deleteFile(drinkDeleted.cover)
             // este return no se muestra porque el status es 204(no content)
             return {'message': `El trago con el id: ${id} fue eliminado exitosamente.`}
         } catch (error) {

@@ -7,6 +7,7 @@ import drinksMiddleware from "../middlewares/drinksMiddleware.js"
 import multer from 'multer'
 import ImageMiddleware from "../middlewares/imageMiddleware.js"
 
+// Este codigo servia para hacer el guardado de imagenes en el disco en lugar de en memoria como se hace actualmente.
 // const storage = multer.diskStorage({
 //     destination: function (req, file, cb) 
 //     {

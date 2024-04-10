@@ -53,7 +53,11 @@ export default class DrinksModel
 
     static async update({id, data})
     {
+        const drinkUpdated = await drinksDB.findOne({_id: new ObjectId(id)})
+
         try {
+            if (drinkUpdated.cover && data.cover) await deleteFile(drinkUpdated.cover)
+
             await drinksDB.updateOne({_id: new ObjectId(id)},{$set: data})
             return {"message": `El trago con el id: ${id} fue actualizado correctamente.`, "newData": data}
         } catch (error) {

@@ -10,7 +10,11 @@ export default class ImageMiddleware
     static async #resizeGeneric({ route, filePath, width, heigh, name})
     {
         return sharp(filePath)
-        .resize( width, heigh)
+        .resize(width,heigh,{
+            kernel: sharp.kernel.nearest,
+            fit: 'cover',
+            background: { r: 255, g: 255, b: 255, alpha: 0.5 }
+        })
         .webp(80)
         .toFile(`uploads/${route}/` + name)
     }

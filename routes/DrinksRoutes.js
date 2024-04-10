@@ -34,7 +34,11 @@ DrinksRoutes.post('/drinks/',[
     drinksMiddleware.create,
 ],DrinksController.create)
 DrinksRoutes.delete('/drinks/:id',DrinksController.delete)
-DrinksRoutes.patch('/drinks/:id',[drinksMiddleware.update],DrinksController.update)
+DrinksRoutes.patch('/drinks/:id',[
+    drinksMiddleware.update,
+    upload.single('cover'),
+    ImageMiddleware.resizeDrinkImage
+],DrinksController.update)
 
 DrinksRoutes.use(CategoriesRoutes)
 DrinksRoutes.use(IngredientsRoutes)

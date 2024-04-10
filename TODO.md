@@ -8,4 +8,4 @@
 
 # Funcionalidades en proceso:
 - Incorporar la carga de imagenes al proyecto para previsualizar como deberia verse el trago.
-    - falta que se elimine la imagen original.
+    - Realizar: estandarizacion de el eliminar: si no se puede eliminar una imagen que no se elimine el documento y biceversa.

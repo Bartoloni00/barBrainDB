@@ -7,9 +7,10 @@ const drinksDB = db.collection(process.env.DRINKS_COLLECTION_DB)
 
 export default class DrinksModel
 {
-    static async getAll()
+    static async getAll(filters)
     {
-        return drinksDB.find().toArray()
+        let activeFilters = DrinksModel.#prepareFilters(filters)
+        return drinksDB.find(activeFilters).toArray()
     }
     
     static async getById({id})
@@ -63,5 +64,25 @@ export default class DrinksModel
         } catch (error) {
             throw new Error(`El trago no pudo ser actualizado: ${error}`)
         }
+    }
+
+    static #prepareFilters(filters)
+    {
+        let activeFilters = {}
+        if (!filters) return {}
+        if (filters.name) 
+        {
+            activeFilters.$text = { $search: filters.name }
+        }
+        if(filters.category)
+        {
+            activeFilters.category = filters.category
+        }
+        if(filters.ingredient)
+        {
+            activeFilters["ingredients.name"] = filters.ingredient
+        }
+        console.log(activeFilters);
+        return activeFilters
     }
 }

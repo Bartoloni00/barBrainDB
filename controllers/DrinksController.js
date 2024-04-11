@@ -4,7 +4,9 @@ export default class DrinksController
 {
     static async getAll(req, res)
     {
-        const drinks = await DrinksModel.getAll()
+        let filters = req.query
+
+        const drinks = await DrinksModel.getAll(filters)
         if(drinks) return res.json(drinks)
         res.status(404).json({Error: 'Drinks not found'})
     }

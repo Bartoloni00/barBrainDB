@@ -1,3 +1,4 @@
+import { APIerrors } from '../errors.js'
 import CategoriesModel from '../models/CategoriesModel.js'
 
 export default class CategoriesController 
@@ -6,16 +7,16 @@ export default class CategoriesController
     {
         const categories = await CategoriesModel.getAll()
         if(categories) return res.json(categories)
-        res.status(404).json({Error: 'Categories not found'})
+        res.status(404).json(APIerrors.NOT_FOUND)
     }
 
     static async getById(req, res)
     {
-        const categorieID = req.params.id
+        const categoryID = req.params.id
 
-        CategoriesModel.getById({id:categorieID})
-            .then(categorie => {
-                res.status(200).send(categorie)
+        CategoriesModel.getById({id:categoryID})
+            .then(category => {
+                res.status(200).send(category)
             })
             .catch(err => {
                 res.status(404).json({Error: err.message})

@@ -1,3 +1,4 @@
+import { APIerrors } from '../errors.js'
 import DrinksModel from '../models/DrinksModel.js'
 
 export default class DrinksController
@@ -7,8 +8,8 @@ export default class DrinksController
         let filters = req.query
 
         const drinks = await DrinksModel.getAll(filters)
-        if(drinks) return res.json(drinks)
-        res.status(404).json({Error: 'Drinks not found'})
+        if(!drinks) res.status(404).json(APIerrors.NOT_FOUND)
+        res.json(drinks)
     }
 
     static async getById(req, res)
@@ -16,7 +17,7 @@ export default class DrinksController
         const drinkId = req.params.id
         DrinksModel.getById({id: drinkId})
             .then(drink => { 
-                if(!drink) res.status(404).json({Error:`No logramos encontrar el trago con el id: ${id}`})
+                if(!drink) res.status(404).json(APIerrors.NOT_FOUND)
                 res.status(200).send(drink)
             })
             .catch(err => res.status(404).json({Error: err.message}))
@@ -45,6 +46,13 @@ export default class DrinksController
         DrinksModel.update({id: id, data: updatedDrink})
             .then(drink => res.status(202).send(drink))
             .catch(err => res.status(500).json({Error: err.message}))
+    }
+
+    static async getRandom(req, res)
+    {
+        const drinkRandom = await DrinksModel.getRandom()
+        if(!drinkRandom) res.status(400).json(APIerrors.NOT_FOUND)
+        res.status(200).send(drinkRandom)
     }
 
     static #prepareRequestData(req)

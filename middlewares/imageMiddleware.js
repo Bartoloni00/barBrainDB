@@ -1,3 +1,4 @@
+import { APIerrors } from "../errors.js"
 import sharp from "sharp"
 
 export default class ImageMiddleware
@@ -26,7 +27,7 @@ export default class ImageMiddleware
         const imageName = uniqueSuffix + '-drink.webp'
         
         try {
-            const image = await ImageMiddleware.#resizeGeneric({
+            await ImageMiddleware.#resizeGeneric({
                 route: 'drinks',
                 filePath: req.file.buffer,
                 width: 512,
@@ -37,7 +38,7 @@ export default class ImageMiddleware
             req.file.path =  `/uploads/drinks/${imageName}`
             next()
         } catch (error) {
-            res.status(500).json({ error: 'Error al procesar la imagen: ' + error.message })
+            res.status(500).json(APIerrors.IMAGE_PROCESSING_ERROR)
         }
     }
 

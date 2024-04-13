@@ -1,4 +1,5 @@
 import { MongoClient, ObjectId } from "mongodb"
+import { APIerrors } from "../errors.js"
 
 const client = new MongoClient(process.env.CONNECTION_DB)
 const db = client.db(process.env.NAME_DB)
@@ -16,7 +17,7 @@ export default class CategoriesModel
         try {
             return categoriesDB.findOne({_id: new ObjectId(id)})
        } catch (error) {
-            throw new Error(`we can't found the categorie with id: ${id}`)
+            throw new Error(APIerrors.NOT_FOUND.title)
        }
     }
 
@@ -32,7 +33,7 @@ export default class CategoriesModel
             newCategory._id = category.insertedId
             return newCategory
         } catch (error) {
-            throw Error(`La categoria no pudo ser agregada: ${error}`)
+            throw Error(APIerrors.CREATE_FAILED.title)
         }
     }
 
@@ -43,7 +44,7 @@ export default class CategoriesModel
             // este return no se muestra porque el status es 204(no content)
             return {'message': `La categoria con el id: ${id} fue eliminada exitosamente.`}
         } catch (error) {
-            throw new Error(`La categoria no pudo ser eliminada: ${error}`)
+            throw new Error(APIerrors.DELETE_FAILED.title)
         }
     }
 
@@ -53,7 +54,7 @@ export default class CategoriesModel
             await categoriesDB.updateOne({_id: new ObjectId(id)},{$set: data})
             return {"message": `La categoria con el id: ${id} fue actualizada correctamente.`, "newData": data}
         } catch (error) {
-            throw new Error(`La categoria no pudo ser actualizada: ${error}`)
+            throw new Error(APIerrors.UPDATE_FAILED.title)
         }
     }
 }

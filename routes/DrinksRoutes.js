@@ -27,6 +27,7 @@ const upload = multer({storage})
 const DrinksRoutes = express.Router()
 
 DrinksRoutes.get('/drinks/',DrinksController.getAll)
+DrinksRoutes.get('/drinks/random/',DrinksController.getRandom)
 DrinksRoutes.get('/drinks/:id',DrinksController.getById)
 DrinksRoutes.post('/drinks/',[
     upload.single('cover'),
@@ -39,6 +40,7 @@ DrinksRoutes.patch('/drinks/:id',[
     upload.single('cover'),
     ImageMiddleware.resizeDrinkImage
 ],DrinksController.update)
+
 
 DrinksRoutes.use(CategoriesRoutes)
 DrinksRoutes.use(IngredientsRoutes)

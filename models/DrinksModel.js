@@ -1,5 +1,6 @@
 import { MongoClient, ObjectId } from "mongodb"
 import {deleteFile} from '../services/fs.js'
+import { APIerrors } from "../errors.js"
 
 const client = new MongoClient(process.env.CONNECTION_DB)
 const db = client.db(process.env.NAME_DB)
@@ -18,22 +19,26 @@ export default class DrinksModel
         try {
             return drinksDB.findOne({_id: new ObjectId(id)})
        } catch (error) {
-            throw new Error(`No logramos encontrar el trago con el id: ${id}`)
+            throw new Error(APIerrors.NOT_FOUND.title)
        }
+    }
+    
+    static async getRandom()
+    {
+        const pipeline = [ { $sample: { size: 1 } } ]
+        return await drinksDB.aggregate(pipeline).toArray()
     }
 
     static async create({data})
     {
-        const newDrink = {
-            ...data
-        }
+        const newDrink = {...data}
 
         try {
             const drink = await drinksDB.insertOne(newDrink)
             newDrink._id = drink.insertedId
             return newDrink
         } catch (error) {
-            throw Error(`El trago no pudo ser agregado: ${error}`)
+            throw Error(APIerrors.CREATE_FAILED.title)
         }
     }
 
@@ -48,7 +53,7 @@ export default class DrinksModel
             // este return no se muestra porque el status es 204(no content)
             return {'message': `El trago con el id: ${id} fue eliminado exitosamente.`}
         } catch (error) {
-            throw new Error(`El trago no pudo ser eliminado: ${error}`)
+            throw new Error(APIerrors.DELETE_FAILED.title)
         }
     }
 
@@ -62,7 +67,7 @@ export default class DrinksModel
             await drinksDB.updateOne({_id: new ObjectId(id)},{$set: data})
             return {"message": `El trago con el id: ${id} fue actualizado correctamente.`, "newData": data}
         } catch (error) {
-            throw new Error(`El trago no pudo ser actualizado: ${error}`)
+            throw new Error(APIerrors.UPDATE_FAILED.title)
         }
     }
 
@@ -82,7 +87,6 @@ export default class DrinksModel
         {
             activeFilters["ingredients.name"] = filters.ingredient
         }
-        console.log(activeFilters);
         return activeFilters
     }
 }

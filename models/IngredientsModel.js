@@ -1,4 +1,5 @@
 import { MongoClient, ObjectId } from "mongodb"
+import { APIerrors } from "../errors.js"
 
 const client = new MongoClient(process.env.CONNECTION_DB)
 const db = client.db(process.env.NAME_DB)
@@ -16,7 +17,7 @@ export default class IngredientsModel
         try {
             return ingredientDB.findOne({_id: new ObjectId(id)})
        } catch (error) {
-            throw new Error(`we can't found the ingredient with id: ${id}`)
+            throw new Error(APIerrors.NOT_FOUND.title)
        }
     }
 
@@ -31,7 +32,7 @@ export default class IngredientsModel
             newIngredient._id = ingredient.insertedId
             return newIngredient
         } catch (error) {
-            throw new Error(`El ingrediente no pudo ser agregado: ${error}`)
+            throw new Error(APIerrors.CREATE_FAILED.title)
         }
     }
 
@@ -42,7 +43,7 @@ export default class IngredientsModel
             // este return no se muestra porque el status es 204(no content)
             return {'message': `El ingrediente con el id: ${id} fue eliminado exitosamente.`}
         } catch (error) {
-            throw new Error(`El ingrediente no pudo ser eliminado: ${error}`)
+            throw new Error(APIerrors.DELETE_FAILED.title)
         }
     }
 
@@ -52,7 +53,7 @@ export default class IngredientsModel
             await ingredientDB.updateOne({_id: new ObjectId(id)}, {$set: data})
             return {"message": `Èl ingrediente con el id: ${id} fue actualizado correctamente.`, "newData": data}
         } catch (error) {
-            throw new Error(`El ingrediente no pudo ser actualizado: ${error}`)
+            throw new Error(APIerrors.UPDATE_FAILED.title)
         }
     }
 }

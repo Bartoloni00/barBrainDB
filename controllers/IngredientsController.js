@@ -1,3 +1,4 @@
+import { APIerrors } from '../errors.js'
 import IngredientsModel from '../models/IngredientsModel.js'
 
 export default class IngredientsController
@@ -6,7 +7,7 @@ export default class IngredientsController
     {
         const ingredients = await IngredientsModel.getAll()
         if(ingredients) return res.status(200).json(ingredients)
-        res.status(404).json({Error: 'Ingredients not found'})
+        res.status(404).json(APIerrors.NOT_FOUND)
     }
 
     static async getById(req,res)

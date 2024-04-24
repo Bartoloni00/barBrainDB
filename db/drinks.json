@@ -1,129 +1,564 @@
 [
     {
-      "name": "Mojito",
-      "descripcion": "Refrescante cóctel cubano con base de ron blanco, menta, limón, azúcar y soda.",
-      "category":"Cócteles",
+      "name": "mojito",
+      "descripcion": "refrescante coctel cubano con base de ron blanco, menta, limon, azucar y soda.",
+      "category":"cocteles",
       "ingredients": [
         {
-          "name": "Ron blanco",
+          "name": "ron blanco",
           "amount": "2 oz"
         },
         {
-          "name": "Menta fresca",
+          "name": "menta",
           "amount": "8 hojas"
         },
         {
-          "name": "Azúcar",
+          "name": "azucar",
           "amount": "2 cucharaditas"
         },
         {
-          "name": "Jugo de limón",
+          "name": "limon",
           "amount": "1 oz"
         },
         {
-          "name": "Soda",
+          "name": "soda",
           "amount": "2 oz"
         }
       ]
     },
     {
-      "name": "Cosmopolitan",
-      "descripcion": "Cóctel clásico con vodka, triple sec, jugo de arándano y jugo de limón.",
-      "category":"Cócteles",
+      "name": "cosmopolitan",
+      "descripcion": "coctel clásico con vodka, triple sec, jugo de arandano y jugo de limon.",
+      "category":"cocteles",
       "ingredients": [
         {
-          "name": "Vodka",
+          "name": "vodka",
           "amount": "1 1/2 oz"
         },
         {
-          "name": "Triple sec",
+          "name": "triple sec",
           "amount": "1 oz"
         },
         {
-          "name": "Jugo de arándano",
+          "name": "arandano",
           "amount": "1/2 oz"
         },
         {
-          "name": "Jugo de limón",
+          "name": "limon",
           "amount": "1/2 oz"
         }
       ]
     },
     {
-        "name": "Daiquiri",
-        "descripcion": "Cóctel refrescante y equilibrado con ron blanco, jugo de limón y sirope de azúcar.",
-        "category":"Cócteles",
+        "name": "daiquiri",
+        "descripcion": "coctel refrescante y equilibrado con ron blanco, jugo de limon y sirope de azucar.",
+        "category":"cocteles",
         "ingredients": [
           {
-            "name": "Ron blanco",
+            "name": "ron blanco",
             "amount": "2 oz"
           },
           {
-            "name": "Jugo de limón",
+            "name": "limon",
             "amount": "1 oz"
           },
           {
-            "name": "Azúcar",
+            "name": "azucar",
             "amount": "3/4 oz"
           }
         ]
       },
       {
-        "name": "Caipirinha",
-        "descripcion": "Cóctel brasileño con cachaça, lima y azúcar, servido con hielo picado.",
-        "category":"Cócteles",
+        "name": "caipirinha",
+        "descripcion": "coctel brasileño con cachaça, lima y azucar, servido con hielo picado.",
+        "category":"cocteles",
         "ingredients": [
           {
-            "name": "Cachaça",
+            "name": "cachaça",
             "amount": "2 oz"
           },
           {
-            "name": "Lima",
+            "name": "lima",
             "amount": "1/2 lima cortada en trozos"
           },
           {
-            "name": "Azúcar",
+            "name": "azucar",
             "amount": "2 cucharaditas"
           }
         ]
       },
       {
-        "name": "Margarita",
-        "descripcion": "Cóctel mexicano con tequila, triple sec y jugo de lima, servido con sal en el borde del vaso.",
-        "category":"Cócteles",
+        "name": "margarita",
+        "descripcion": "Coctel mexicano con tequila, triple sec y jugo de lima, servido con sal en el borde del vaso.",
+        "category":"cocteles",
         "ingredients": [
           {
-            "name": "Tequila",
+            "name": "tequila",
             "amount": "1 1/2 oz"
           },
           {
-            "name": "Triple sec",
+            "name": "triple sec",
             "amount": "1 oz"
           },
           {
-            "name": "Lima",
+            "name": "lima",
             "amount": "3/4 oz"
           }
         ]
       },
       {
         "name": "Dry Martini",
-        "descripcion": "Elegante y clásico cóctel compuesto por ginebra y vermut seco, usualmente adornado con una aceituna o twist de limón. Para prepararlo, llena un vaso mezclador con hielo y añade la ginebra y el vermut seco. Revuelve suavemente hasta que se enfríe y luego cuela la mezcla en una copa de martini previamente enfriada. Adorna con una aceituna o twist de limón, según tu preferencia.",
-        "category": "Cócteles",
+        "descripcion": "Elegante y clásico coctel compuesto por ginebra y vermut seco, usualmente adornado con una aceituna o twist de limon. Para prepararlo, llena un vaso mezclador con hielo y añade la ginebra y el vermut seco. Revuelve suavemente hasta que se enfrie y luego cuela la mezcla en una copa de martini previamente enfriada. Adorna con una aceituna o twist de limon, segun tu preferencia.",
+        "category": "cocteles",
         "ingredients": [
           {
-            "name": "Ginebra",
+            "name": "ginebra",
             "amount": "2.5 oz"
           },
           {
-            "name": "Vermut seco",
+            "name": "vermut seco",
             "amount": "0.5 oz"
           },
           {
-            "name": "Aceituna o twist de limón",
+            "name": "aceituna o twist de limon",
             "amount": "Para decorar"
           }
         ]
+      },
+      {
+        "name": "Piña Colada",
+        "descripcion": "La Piña Colada es un delicioso coctel tropical que combina ron blanco, crema de coco y jugo de piña, tipicamente servido con hielo triturado en un vaso alto o una copa de piña. Para prepararlo, mezcla en una licuadora el ron blanco, la crema de coco y el jugo de piña con hielo hasta que esté suave y cremoso. Vierte la mezcla en un vaso alto o una copa de piña y decora con una rodaja de piña y una cereza al marrasquino.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "ron blanco",
+            "amount": "2 oz"
+          },
+          {
+            "name": "crema de coco",
+            "amount": "2 oz"
+          },
+          {
+            "name": "jugo de piña",
+            "amount": "3 oz"
+          },
+          {
+            "name": "hielo",
+            "amount": "al gusto"
+          },
+          {
+            "name": "rodaja de piña",
+            "amount": "Para decorar"
+          },
+          {
+            "name": "cereza al marrasquino",
+            "amount": "Para decorar"
+          }
+        ]
+      },
+      {
+        "name": "Mojito de Fresa",
+        "descripcion": "El Mojito de Fresa es una refrescante variante del clásico mojito, con un toque dulce y frutal. Se prepara moliendo fresas frescas con azúcar para obtener un puré, que luego se mezcla con hojas de menta, ron blanco, jugo de limon, agua con gas y hielo. La combinacion de sabores agridulces de la fresa y el limon, junto con el aroma refrescante de la menta, hacen de este coctel una opcion perfecta para los dias calurosos.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "fresas frescas",
+            "amount": "4 unidades"
+          },
+          {
+            "name": "azúcar",
+            "amount": "2 cucharadas"
+          },
+          {
+            "name": "menta",
+            "amount": "8-10 hojas"
+          },
+          {
+            "name": "ron blanco",
+            "amount": "2 oz"
+          },
+          {
+            "name": "jugo de limon",
+            "amount": "1 oz"
+          },
+          {
+            "name": "agua con gas",
+            "amount": "1 oz"
+          },
+          {
+            "name": "hielo",
+            "amount": "al gusto"
+          },
+          {
+            "name": "rodaja de limon y fresa",
+            "amount": "Para decorar"
+          },
+          {
+            "name": "hoja de menta",
+            "amount": "Para decorar"
+          }
+        ]
+      },
+      {
+        "name": "Tequila Sunrise",
+        "descripcion": "El Tequila Sunrise es un coctel vibrante y colorido que combina tequila, jugo de naranja y un toque de granadina, creando un efecto degradado que recuerda a un amanecer. Para prepararlo, primero llena un vaso alto con hielo y vierte el tequila y el jugo de naranja. Luego, suavemente vierte la granadina por el borde del vaso para que se deposite en el fondo, creando el efecto degradado. No revuelvas para mantener la separacion de colores. Decora con una rodaja de naranja y una cereza al marrasquino.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "tequila",
+            "amount": "2 oz"
+          },
+          {
+            "name": "jugo de naranja",
+            "amount": "4 oz"
+          },
+          {
+            "name": "granadina",
+            "amount": "0.5 oz"
+          },
+          {
+            "name": "hielo",
+            "amount": "al gusto"
+          },
+          {
+            "name": "rodaja de naranja",
+            "amount": "Para decorar"
+          },
+          {
+            "name": "cereza al marrasquino",
+            "amount": "Para decorar"
+          }
+        ]
+      },
+      {
+        "name": "Mai Tai",
+        "descripcion": "El Mai Tai es un coctel tropical y exotico que combina ron, licor de naranja, almendra y jugo de limon, creando una deliciosa y refrescante bebida. Para prepararlo, mezcla el ron blanco, el ron oscuro, el licor de naranja, el almibar de almendra y el jugo de limon en una coctelera con hielo. Agita bien y cuela la mezcla en un vaso alto lleno de hielo triturado. Decora con una rodaja de piña, una cereza al marrasquino y una ramita de menta.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "ron blanco",
+            "amount": "1 oz"
+          },
+          {
+            "name": "ron oscuro",
+            "amount": "1 oz"
+          },
+          {
+            "name": "licor de naranja",
+            "amount": "0.5 oz"
+          },
+          {
+            "name": "almibar de almendra",
+            "amount": "0.5 oz"
+          },
+          {
+            "name": "jugo de limon",
+            "amount": "0.75 oz"
+          },
+          {
+            "name": "hielo",
+            "amount": "al gusto"
+          },
+          {
+            "name": "rodaja de piña",
+            "amount": "Para decorar"
+          },
+          {
+            "name": "cereza al marrasquino",
+            "amount": "Para decorar"
+          },
+          {
+            "name": "ramita de menta",
+            "amount": "Para decorar"
+          }
+        ]
+      },
+      {
+        "name": "Sangria",
+        "descripcion": "La Sangria es un refrescante coctel español hecho a base de vino tinto, frutas y un toque de licor, como brandy o triple sec. Es una bebida perfecta para compartir en reuniones sociales o como acompañamiento para una tarde de verano. Para prepararla, mezcla vino tinto, trozos de frutas (como naranja, limon, manzana y melocoton), jugo de naranja, azúcar y licor en una jarra grande. Refrigera la sangria durante al menos una hora para que los sabores se mezclen bien. Sirve en vasos con hielo y decora con rodajas de frutas frescas.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "vino tinto",
+            "amount": "1 botella (750 ml)"
+          },
+          {
+            "name": "naranja",
+            "amount": "1, en rodajas"
+          },
+          {
+            "name": "limon",
+            "amount": "1, en rodajas"
+          },
+          {
+            "name": "manzana",
+            "amount": "1, en trozos"
+          },
+          {
+            "name": "melocoton",
+            "amount": "1, en trozos"
+          },
+          {
+            "name": "jugo de naranja",
+            "amount": "1 taza"
+          },
+          {
+            "name": "azúcar",
+            "amount": "1/4 taza (opcional, ajustar al gusto)"
+          },
+          {
+            "name": "licor (brandy, triple sec, etc.)",
+            "amount": "1/4 taza"
+          },
+          {
+            "name": "hielo",
+            "amount": "al gusto"
+          }
+        ]
+      },
+      {
+        "name": "Manhattan",
+        "descripcion": "El Manhattan es un coctel clásico y elegante que combina whisky bourbon o de centeno con vermut rojo y un toque de amargo de angostura, creando una bebida sofisticada y llena de sabor. Se sirve tradicionalmente en una copa de coctel previamente enfriada y se puede adornar con una cereza al marrasquino. El equilibrio entre la dulzura del vermut y la robustez del whisky lo convierten en una opcion popular entre los amantes de los cocteles clásicos.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "whisky bourbon o de centeno",
+            "amount": "2 oz"
+          },
+          {
+            "name": "vermut rojo",
+            "amount": "1 oz"
+          },
+          {
+            "name": "amargo de angostura",
+            "amount": "2 golpes"
+          },
+          {
+            "name": "cereza al marrasquino",
+            "amount": "Para decorar"
+          },
+          {
+            "name": "hielo",
+            "amount": "al gusto"
+          }
+        ]
+      },
+      {
+        "name": "Old Fashioned",
+        "descripcion": "El Old Fashioned es un coctel clásico que destaca por su sencillez y su robusto sabor. Se elabora mezclando azúcar, amargo de angostura, un chorrito de agua, whisky bourbon o de centeno y hielo. Se sirve en un vaso bajo, a menudo conocido como vaso Old Fashioned, con una rodaja de naranja y una cereza al marrasquino para decorar. El resultado es una bebida fuerte y llena de carácter, perfecta para los amantes del whisky.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "azúcar",
+            "amount": "1 cucharadita"
+          },
+          {
+            "name": "amargo de angostura",
+            "amount": "2 golpes"
+          },
+          {
+            "name": "agua",
+            "amount": "Para disolver el azúcar"
+          },
+          {
+            "name": "whisky bourbon o de centeno",
+            "amount": "2 oz"
+          },
+          {
+            "name": "rodaja de naranja",
+            "amount": "Para decorar"
+          },
+          {
+            "name": "cereza al marrasquino",
+            "amount": "Para decorar"
+          },
+          {
+            "name": "hielo",
+            "amount": "al gusto"
+          }
+        ]
+      },
+      {
+        "name": "Mojito de Mango",
+        "descripcion": "El Mojito de Mango es una deliciosa variante tropical del clásico mojito, que incorpora puré de mango para darle un sabor dulce y afrutado. Se prepara moliendo mango fresco con azúcar para obtener un puré, que luego se mezcla con hojas de menta, ron blanco, jugo de limon, agua con gas y hielo. La combinacion de sabores refrescantes de la menta y el mango hacen de este coctel una opcion perfecta para los dias calurosos.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "mango fresco",
+            "amount": "1 unidad"
+          },
+          {
+            "name": "azúcar",
+            "amount": "2 cucharadas"
+          },
+          {
+            "name": "menta",
+            "amount": "8-10 hojas"
+          },
+          {
+            "name": "ron blanco",
+            "amount": "2 oz"
+          },
+          {
+            "name": "jugo de limon",
+            "amount": "1 oz"
+          },
+          {
+            "name": "agua con gas",
+            "amount": "1 oz"
+          },
+          {
+            "name": "hielo",
+            "amount": "al gusto"
+          },
+          {
+            "name": "rodaja de limon y mango",
+            "amount": "Para decorar"
+          },
+          {
+            "name": "menta",
+            "amount": "Para decorar"
+          }
+        ]
+      },
+      {
+        "name": "Mimosa",
+        "descripcion": "La Mimosa es un coctel clásico y refrescante que combina champagne o vino espumoso con jugo de naranja. Es conocido por su sabor afrutado y su apariencia elegante, lo que lo convierte en una opcion popular para brunches y ocasiones especiales.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "champagne o vino espumoso",
+            "amount": "1 parte"
+          },
+          {
+            "name": "jugo de naranja",
+            "amount": "1 parte"
+          },
+          {
+            "name": "rodaja de naranja",
+            "amount": "Para decorar"
+          }
+        ]
+      },
+      {
+        "name": "Bloody Mary",
+        "descripcion": "El Bloody Mary es un coctel picante y sabroso que combina vodka, jugo de tomate, jugo de limon, salsa inglesa, salsa picante y una variedad de condimentos. Es conocido por ser un remedio popular contra la resaca y por su distintivo color rojo.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "vodka",
+            "amount": "1 1/2 oz"
+          },
+          {
+            "name": "jugo de tomate",
+            "amount": "3 oz"
+          },
+          {
+            "name": "jugo de limon",
+            "amount": "1/2 oz"
+          },
+          {
+            "name": "salsa inglesa",
+            "amount": "2-3 golpes"
+          },
+          {
+            "name": "salsa picante",
+            "amount": "2-3 golpes"
+          },
+          {
+            "name": "Sal y pimienta",
+            "amount": "al gusto"
+          },
+          {
+            "name": "rodaja de limon",
+            "amount": "Para decorar"
+          },
+          {
+            "name": "apio",
+            "amount": "Para decorar"
+          }
+        ]
+      },
+      {
+        "name": "Negroni",
+        "descripcion": "El Negroni es un coctel clásico italiano que combina ginebra, vermut rojo y Campari, un licor amargo. Es conocido por su equilibrio entre lo amargo y lo dulce, y se sirve tradicionalmente en un vaso bajo con hielo y una rodaja de naranja para decorar.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "ginebra",
+            "amount": "1 oz"
+          },
+          {
+            "name": "vermut rojo",
+            "amount": "1 oz"
+          },
+          {
+            "name": "Campari",
+            "amount": "1 oz"
+          },
+          {
+            "name": "rodaja de naranja",
+            "amount": "Para decorar"
+          }
+        ]
+      },
+      {
+        "name": "Moscow Mule",
+        "descripcion": "El Moscow Mule es un coctel refrescante y con un toque picante que combina vodka, ginger beer y jugo de lima. Se sirve en un vaso de cobre con hielo y una rodaja de lima, y es conocido por su sabor distintivo y su presentacion llamativa.",
+        "category": "cocteles",
+        "ingredients": [
+          {
+            "name": "vodka",
+            "amount": "2 oz"
+          },
+          {
+            "name": "ginger beer",
+            "amount": "4 oz"
+          },
+          {
+            "name": "jugo de lima",
+            "amount": "1/2 oz"
+          },
+          {
+            "name": "rodaja de lima",
+            "amount": "Para decorar"
+          }
+        ]
+      },
+      {
+        "name":"Whiskey Sour"
+      },
+      {
+        "name":"Mojito de Kiwi"
+      },
+      {
+        "name":"Fernet"
+      },
+      {
+        "name":"Fernet ginger ale"
+      },
+      {
+        "name":"Campari Soda"
+      },
+      {
+        "name":"Campari Tonic"
+      },
+      {
+        "name":"Aperol Spritz"
+      },
+      {
+        "name":"Gancia"
+      },
+      {
+        "name":"Gancia Batido"
+      },
+      {
+        "name":"Gancia Americano"
+      },
+      {
+        "name":"Gancia con Naranja"
+      },
+      {
+        "name":"Garibaldi"
       }
-      
-  ]
+]

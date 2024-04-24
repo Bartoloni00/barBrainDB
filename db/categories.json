@@ -1,22 +1,22 @@
 [
     {
-      "name": "Cócteles",
+      "name": "cocteles",
       "description": "Tragos elaborados con una mezcla de diferentes ingredientes, incluyendo licores, jugos, jarabes y otros elementos para crear sabores complejos y equilibrados. Suelen ser servidos en copas decorativas."
     },
     {
-      "name": "Tragos largos",
+      "name": "tragos largos",
       "description": "Tragos refrescantes que se sirven en vasos altos y contienen una mayor cantidad de mezcladores, como jugos, refrescos o agua, diluyendo así el sabor del alcohol. Ideales para beber lentamente a lo largo de un período de tiempo más prolongado."
     },
     {
-      "name": "Tragos cortos",
+      "name": "tragos cortos",
       "description": "Tragos concentrados en sabor, que se sirven en vasos más pequeños y contienen una proporción más alta de alcohol en relación con los mezcladores. Son ideales para ser consumidos rápidamente debido a su tamaño más pequeño y su sabor más intenso."
     },
     {
-      "name": "Tragos exóticos",
+      "name": "tragos exóticos",
       "description": "Tragos únicos y distintivos, a menudo inspirados en recetas de diferentes culturas o regiones del mundo. Pueden contener ingredientes poco comunes o combinaciones inusuales para crear experiencias de sabor sorprendentes."
     },
     {
-      "name": "Tragos sin alcohol",
+      "name": "tragos sin alcohol",
       "description": "Alternativas no alcohólicas a los tragos tradicionales, elaboradas con jugos, refrescos, jarabes, hierbas y otros ingredientes para crear sabores complejos y refrescantes sin la presencia de alcohol."
     }
   ]

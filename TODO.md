@@ -8,4 +8,3 @@
 - agregar un "diccionario de errores" estilo firebase
 
 # Funcionalidades en proceso:
-- devolver un trago random

@@ -1,42 +1,190 @@
 [
   {
-    "name": "Ron blanco",
+    "name": "ron blanco",
     "category": "Alcohol"
   },
   {
-    "name": "Menta",
+    "name": "ron oscuro",
+    "category": "Alcohol"
+  },
+  {
+    "name": "menta",
     "category": "Adereso"
   },
   {
-    "name": "Azúcar",
+    "name": "azucar",
     "category": "Adereso"
   },
   {
-    "name": "Jugo de limón",
+    "name": "limon",
     "category": "Jugo"
   },
   {
-    "name": "Vodka",
+    "name": "vodka",
     "category": "Alcohol"
   },
   {
-    "name": "Triple sec",
+    "name": "triple sec",
     "category": "Alcohol"
   },
   {
-    "name": "Jugo de arándano",
+    "name": "arandano",
     "category": "Jugo"
   },
   {
-    "name": "Cachaça",
+    "name": "cachaça",
     "category": "Alcohol"
   },
   {
-    "name": "Lima",
+    "name": "lima",
     "category": "Jugo"
   },
   {
-    "name": "Tequila",
+    "name": "rodaja de lima",
+    "category": "fruta"
+  },
+  {
+    "name": "tequila",
     "category": "Alcohol"
+  },
+  {
+    "name": "soda",
+    "category": "bebida carbonatada"
+  },
+  {
+    "name": "ginebra",
+    "category": "Alcohol"
+  },
+  {
+    "name": "vermut seco",
+    "category": "Licor"
+  },
+  {
+    "name": "vermut rojo",
+    "category": "Licor"
+  },
+  {
+    "name": "aceituna",
+    "category": "fruta"
+  },
+  {
+    "name": "crema de coco",
+    "category": "Jugo"
+  },
+  {
+    "name": "jugo de piña",
+    "category": "Jugo"
+  },
+  {
+    "name": "jugo de tomate",
+    "category": "Jugo"
+  },
+  {
+    "name": "hielo",
+    "category": "Hielo"
+  },
+  {
+    "name": "piña",
+    "category": "fruta"
+  },
+  {
+    "name": "cereza al marrasquino",
+    "category": "fruta"
+  },
+  {
+    "name": "fresas",
+    "category": "fruta"
+  },
+  {
+    "name": "naranja",
+    "category": "fruta"
+  },
+  {
+    "name": "manzana",
+    "category": "fruta"
+  },
+  {
+    "name": "melocoton",
+    "category": "fruta"
+  },
+  {
+    "name": "jugo de naranja",
+    "category": "Jugo"
+  },
+  {
+    "name": "granadina",
+    "category": "Jarabe"
+  },
+  {
+    "name": "licor de naranja",
+    "category": "Licor"
+  },
+  {
+    "name": "almibar de almendra",
+    "category": "Almibar"
+  },
+  {
+    "name": "vino tinto",
+    "category": "Alcohol"
+  },
+  {
+    "name": "licor",
+    "category": "Licor"
+  },
+  {
+    "name": "whisky bourbon",
+    "category": "Alcohol"
+  },
+  {
+    "name": "whisky centeno",
+    "category": "Alcohol"
+  },
+  {
+    "name": "amargo de angostura",
+    "category": "Alcohol"
+  },
+  {
+    "name": "agua",
+    "category": "agua"
+  },
+  {
+    "name": "mango",
+    "category": "fruta"
+  },
+  {
+    "name": "champagne",
+    "category": "Alcohol"
+  },
+  {
+    "name": "vino espumoso",
+    "category": "Alcohol"
+  },
+  {
+    "name": "salsa inglesa",
+    "category": "salsa"
+  },
+  {
+    "name": "salsa picante",
+    "category": "salsa"
+  },
+  {
+    "name": "sal",
+    "category": "Adereso"
+  },
+  {
+    "name": "pimienta",
+    "category": "Adereso"
+  },
+  {
+    "name": "apio",
+    "category": "Adereso"
+  },
+  {
+    "name": "campari",
+    "category": "Alcohol"
+  },
+  {
+    "name": "ginger beer",
+    "category": "Cerveza"
   }
 ]

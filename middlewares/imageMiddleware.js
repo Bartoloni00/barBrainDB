@@ -1,5 +1,6 @@
 import { APIerrors } from "../errors.js"
 import sharp from "sharp"
+import DrinksModel from "../models/DrinksModel.js"
 
 export default class ImageMiddleware
 {
@@ -11,11 +12,7 @@ export default class ImageMiddleware
     static async #resizeGeneric({ route, filePath, width, heigh, name})
     {
         return sharp(filePath)
-        .resize(width,heigh,{
-            kernel: sharp.kernel.nearest,
-            fit: 'cover',
-            background: { r: 255, g: 255, b: 255, alpha: 0.5 }
-        })
+        .resize(width, heigh)
         .webp(80)
         .toFile(`uploads/${route}/` + name)
     }
@@ -23,8 +20,7 @@ export default class ImageMiddleware
     static async resizeDrinkImage(req, res, next) {
         if (!req.file) return next()
 
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        const imageName = uniqueSuffix + '-drink.webp'
+        let imageName = await ImageMiddleware.#generateImageName(req)
         
         try {
             await ImageMiddleware.#resizeGeneric({
@@ -42,4 +38,20 @@ export default class ImageMiddleware
         }
     }
 
+    static async #generateImageName(req)
+    {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        let imageName = ''
+        if(req.body.name) 
+        {
+            imageName = `${req.body.name}-${uniqueSuffix}-drink.webp`;
+        }
+        else if(req.method == 'PATCH' || !req.body.name)
+        {
+            let patchDrink = await DrinksModel.getById({id: req.params.id})
+            imageName = `${uniqueSuffix}-${patchDrink.name}-drink.webp`;
+        }
+
+        return imageName.replaceAll(' ', '-')
+    }
 }

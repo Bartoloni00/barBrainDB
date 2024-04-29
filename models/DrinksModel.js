@@ -14,24 +14,16 @@ export default class DrinksModel
         return drinksDB.find(activeFilters).toArray()
     }
     
-    static async paginate({page, perPage})
+    static async paginate(query)
     {
-        page = parseInt(page, 10) || 1
-        perPage = parseInt(perPage, 10) || 50
+        let {page, perPage} = DrinksModel.#parsePaginationData(query)
+        const filters = DrinksModel.#prepareFilters(query)
+
         try {
-            
-            const articles = await drinksDB.aggregate([
-                {
-                $facet: {
-                    metadata: [{ $count: 'totalCount' }],
-                    data: [{ $skip: (page - 1) * perPage }, { $limit: perPage }],
-                },
-                },
-            ]).toArray()
-            let totalCount = articles[0].metadata[0].totalCount
+            const { totalCount, data } = await DrinksModel.#fetchPaginatedData(filters, page, perPage);
             return {
-                metadata: { totalCount, page, perPage, pages: Math.round(totalCount/perPage * 100) / 100},
-                drinks: articles[0].data
+                metadata: DrinksModel.#generateMetadata(totalCount, page, perPage),
+                drinks: data
             }
         } catch (error) {
             throw new Error(`${APIerrors.NOT_FOUND.title} | pagination`)
@@ -112,5 +104,40 @@ export default class DrinksModel
             activeFilters["ingredients.name"] = filters.ingredient
         }
         return activeFilters
+    }
+
+    static #parsePaginationData({page, perPage})
+    {
+        page = parseInt(page, 10) || 1
+        perPage = parseInt(perPage, 10) || 50
+        
+        return {page, perPage}
+    }
+
+    static async #fetchPaginatedData(filters, page, perPage) 
+    {
+        const aggregationPipeline = [
+            { $match: filters },
+            {
+                $facet: {
+                    metadata: [{ $count: 'totalCount' }],
+                    data: [{ $skip: (page - 1) * perPage }, { $limit: perPage }],
+                },
+            },
+        ];
+    
+        const articles = await drinksDB.aggregate(aggregationPipeline).toArray();
+    
+        const totalCount = articles[0]?.metadata[0]?.totalCount || 0;
+        const data = articles[0]?.data || [];
+    
+        return { totalCount, data };
+    }
+
+    static #generateMetadata(totalCount, page, perPage)
+    {
+        let totalPages = Math.round(totalCount/perPage * 100) / 100
+
+        return {totalCount, page, perPage, totalPages}
     }
 }

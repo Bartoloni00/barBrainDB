@@ -27,6 +27,7 @@ const upload = multer({storage})
 const DrinksRoutes = express.Router()
 
 DrinksRoutes.get('/drinks/',DrinksController.getAll)
+DrinksRoutes.get('/drinks/paginate/',drinksMiddleware.paginate,DrinksController.paginate)
 DrinksRoutes.get('/drinks/random/',DrinksController.getRandom)
 DrinksRoutes.get('/drinks/:id',DrinksController.getById)
 DrinksRoutes.post('/drinks/',[

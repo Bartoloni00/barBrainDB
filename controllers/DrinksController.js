@@ -1,4 +1,5 @@
 import { APIerrors } from '../errors.js'
+import drinksMiddleware from '../middlewares/drinksMiddleware.js'
 import DrinksModel from '../models/DrinksModel.js'
 
 export default class DrinksController
@@ -53,6 +54,14 @@ export default class DrinksController
         const drinkRandom = await DrinksModel.getRandom()
         if(!drinkRandom) res.status(400).json(APIerrors.NOT_FOUND)
         res.status(200).send(drinkRandom)
+    }
+
+    static async paginate(req, res)
+    {
+        DrinksModel.paginate(req.query)
+        .then(paginateDrinks => res.status(200).send(paginateDrinks))
+        .catch(err => res.status(400).send(err.message))
+        
     }
 
     static #prepareRequestData(req)

@@ -22,5 +22,9 @@ export const APIerrors = {
     "IMAGE_PROCESSING_ERROR":{
         "title":"IMAGE_PROCESSING_ERROR",
         "code": 301
-    }
+    },
+    "INCOMPLETE_ERROR":{
+        "title":"INCOMPLETE_ERROR",
+        "code": 302
+    },
 }

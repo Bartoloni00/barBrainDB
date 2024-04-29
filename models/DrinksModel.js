@@ -14,6 +14,30 @@ export default class DrinksModel
         return drinksDB.find(activeFilters).toArray()
     }
     
+    static async paginate({page, perPage})
+    {
+        page = parseInt(page, 10) || 1
+        perPage = parseInt(perPage, 10) || 50
+        try {
+            
+            const articles = await drinksDB.aggregate([
+                {
+                $facet: {
+                    metadata: [{ $count: 'totalCount' }],
+                    data: [{ $skip: (page - 1) * perPage }, { $limit: perPage }],
+                },
+                },
+            ]).toArray()
+            let totalCount = articles[0].metadata[0].totalCount
+            return {
+                metadata: { totalCount, page, perPage, pages: Math.round(totalCount/perPage * 100) / 100},
+                drinks: articles[0].data
+            }
+        } catch (error) {
+            throw new Error(`${APIerrors.NOT_FOUND.title} | pagination`)
+        }
+    }
+
     static async getById({id})
     {
         try {

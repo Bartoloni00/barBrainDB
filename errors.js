@@ -27,4 +27,12 @@ export const APIerrors = {
         "title":"INCOMPLETE_ERROR",
         "code": 302
     },
+    "DUPLICATE_ENTRY_ERROR": {
+        "title": "DUPLICATE_ENTRY_ERROR",
+        "code": 303
+    },
+    "HASH_ERROR": {
+        "title": "HASH_ERROR",
+        "code": 304
+    },
 }

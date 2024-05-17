@@ -6,6 +6,7 @@ import drinksMiddleware from "../middlewares/drinksMiddleware.js"
 
 import multer from 'multer'
 import ImageMiddleware from "../middlewares/imageMiddleware.js"
+import UsersRoutes from "./UsersRouter.js"
 
 // Este codigo servia para hacer el guardado de imagenes en el disco en lugar de en memoria como se hace actualmente.
 // const storage = multer.diskStorage({
@@ -45,4 +46,5 @@ DrinksRoutes.patch('/drinks/:id',[
 
 DrinksRoutes.use(CategoriesRoutes)
 DrinksRoutes.use(IngredientsRoutes)
+DrinksRoutes.use(UsersRoutes)
 export default DrinksRoutes

@@ -61,7 +61,6 @@ export default class DrinksController
         DrinksModel.paginate(req.query)
         .then(paginateDrinks => res.status(200).send(paginateDrinks))
         .catch(err => res.status(400).send(err.message))
-        
     }
 
     static #prepareRequestData(req)

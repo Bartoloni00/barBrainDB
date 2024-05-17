@@ -10,7 +10,7 @@ export default class drinksMiddleware
                 req.body = drink
                 next()
             } )
-            .catch(error => res.status(422).json(error))
+            .catch(error => res.status(422).json(error.errors))
     }
 
     static async update(req, res, next)
@@ -20,7 +20,7 @@ export default class drinksMiddleware
                 req.body = drink
                 next()
             })
-            .catch(error => res.status(422).json(error))
+            .catch(error => res.status(422).json(error.errors))
     }
 
     static async paginate(req, res, next)

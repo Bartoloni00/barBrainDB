@@ -5,7 +5,7 @@ import DrinksRoutes from "./routes/DrinksRoutes.js";
 const app = new express()
 const port = 9763
 
-app.use(express.urlencoded({ extended : true }))
+app.use(express.urlencoded({ extended : false }))
 app.use('/',express.static('public'))
 app.use(express.json()) // esto es estrictamente necesario para que nuestra api pueda recibir JSONs
 

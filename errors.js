@@ -3,6 +3,10 @@ export const APIerrors = {
         "title":"NOT_FOUND",
         "code": 100
     },
+    "SUCCESS_LOGOUT":{
+        "title":"SUCCESS_LOGOUT",
+        "code": 101
+    },
     "CREATE_FAILED":{
         "title":"CREATE_FAILED",
         "code": 200
@@ -14,6 +18,10 @@ export const APIerrors = {
     "DELETE_FAILED":{
         "title":"DELETE_FAILED",
         "code": 202
+    },
+    "HASH_ERROR": {
+        "title": "HASH_ERROR",
+        "code": 203
     },
     "VALIDATION_ERROR":{
         "title":"VALIDATION_ERROR",
@@ -31,8 +39,20 @@ export const APIerrors = {
         "title": "DUPLICATE_ENTRY_ERROR",
         "code": 303
     },
-    "HASH_ERROR": {
-        "title": "HASH_ERROR",
-        "code": 304
+    "INVALID_USER_OR_PASSWORD":{
+        "title": "INVALID_USER_OR_PASSWORD",
+        "code": 305
     },
+    "INVALID_TOKEN":{
+        "title": "INVALID_TOKEN",
+        "code": 306
+    },
+    "LOGIN_FAILED":{
+        "title": "LOGIN_FAILED",
+        "code": 401
+    },
+    "LOGOUT_FAILED":{
+        "title": "LOGOUT_FAILED",
+        "code": 401
+    }
 }

@@ -5,7 +5,7 @@ import UsersController from '../controllers/UsersController.js'
 
 const UsersRoutes = express.Router()
 
-UsersRoutes.post('/users/create',[UsersMiddleware.create],UsersController.create)
+UsersRoutes.post('/register',[UsersMiddleware.validate],UsersController.register)
 
 
 UsersRoutes.use(AuthRoutes)

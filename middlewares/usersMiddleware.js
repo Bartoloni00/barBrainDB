@@ -2,7 +2,7 @@ import { usersSchemaCreate , usersSchemaUpdate } from '../schemas/UsersSchema.js
 
 export default class UsersMiddleware
 {
-    static async create(req, res, next)
+    static async validate(req, res, next)
     {
         usersSchemaCreate.validate(req.body,{ abortEarly: false })
             .then( user => {
@@ -12,7 +12,7 @@ export default class UsersMiddleware
             .catch(error => res.status(422).json(error.errors))
     }
 
-    static async update(req, res, next)
+    static async partialValidate(req, res, next)
     {
         usersSchemaUpdate.validate(req.body,{ abortEarly: false, stripUnknown: true })
             .then( user => {

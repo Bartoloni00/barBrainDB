@@ -1,4 +1,4 @@
-import { MongoClient, ObjectId } from "mongodb"
+import { MongoClient } from "mongodb"
 import { APIerrors } from "../errors.js"
 import bcrypt from "bcrypt"
 
@@ -8,11 +8,13 @@ const userDB = db.collection(process.env.USERS_COLLECTION_DB)
 
 export default class UsersModel
 {
-    static async create({email, password})
+    static async register({email, password})
     {
         const newUser = {email, password: await UsersModel.#hashPassword(password)}
-        await UsersModel.#checkUserExists(newUser.email)
-
+       
+        if ( await UsersModel.checkUserExists(newUser.email) ) {
+            throw new Error(APIerrors.DUPLICATE_ENTRY_ERROR.title)
+        }
         try {
             const user = await userDB.insertOne(newUser)
             newUser._id = user.insertedId
@@ -30,11 +32,11 @@ export default class UsersModel
         throw new Error(APIerrors.HASH_ERROR.title)
     }
 
-    static async #checkUserExists(email)
+    static async checkUserExists(email)
     {
         const check = await userDB.findOne({email: email})
 
-        if(check) throw new Error(APIerrors.DUPLICATE_ENTRY_ERROR.title)
-        return
+        if(check) return check
+        return false
     }
 }

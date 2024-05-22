@@ -1,4 +1,5 @@
 import { categorySchemaCreate, categorySchemaUpdate } from "../schemas/CategoriesSchema.js"
+import Result from "../services/resultsPattern.js"
 
 export default class categoriesMiddleware
 {
@@ -9,7 +10,7 @@ export default class categoriesMiddleware
                 req.body = category
                 next()
             } )
-            .catch(error => res.status(500).json(error.errors))
+            .catch(error => res.status(422).json(Result.failure(error.errors)))
     }
 
     static async update(req, res, next)
@@ -19,6 +20,6 @@ export default class categoriesMiddleware
                 req.body = category
                 next()
             })
-            .catch(error => res.status(500).json(error.errors))
+            .catch(error => res.status(422).json(Result.failure(error.errors)))
     }
 }

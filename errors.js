@@ -7,6 +7,14 @@ export const APIerrors = {
         "title":"SUCCESS_LOGOUT",
         "code": 101
     },
+    "SUCCESS_UPDATE":{
+        "title":"SUCCESS_UPDATE",
+        "code": 102
+    },
+    "SUCCESS_DELETE":{
+        "title":"SUCCESS_DELETE",
+        "code": 103
+    },
     "CREATE_FAILED":{
         "title":"CREATE_FAILED",
         "code": 200

@@ -1,5 +1,6 @@
 import { APIerrors } from "../errors.js"
 import { drinksSchemaCreate, drinksSchemaUpdate } from "../schemas/DrinksSchema.js"
+import Result from "../services/resultsPattern.js"
 
 export default class drinksMiddleware 
 {
@@ -10,7 +11,7 @@ export default class drinksMiddleware
                 req.body = drink
                 next()
             } )
-            .catch(error => res.status(422).json(error.errors))
+            .catch(error => res.status(422).json(Result.failure(error.errors)))
     }
 
     static async update(req, res, next)
@@ -20,7 +21,7 @@ export default class drinksMiddleware
                 req.body = drink
                 next()
             })
-            .catch(error => res.status(422).json(error.errors))
+            .catch(error => res.status(422).json(Result.failure(error.errors)))
     }
 
     static async paginate(req, res, next)
@@ -30,7 +31,7 @@ export default class drinksMiddleware
             drinksMiddleware.#validateQueryIntegerParam(req.query.perPage, 'perPage')
             next()
         } catch (error) {
-            res.status(422).json(error.message)
+            res.status(422).json(Result.failure(error.message))
         }
     }
 

@@ -1,36 +1,36 @@
-import { APIerrors } from '../errors.js'
 import IngredientsModel from '../models/IngredientsModel.js'
+import Result from '../services/resultsPattern.js'
 
 export default class IngredientsController
 {
     static async getAll(req, res)
     {
-        const ingredients = await IngredientsModel.getAll()
-        if(ingredients) return res.status(200).json(ingredients)
-        res.status(404).json(APIerrors.NOT_FOUND)
+        IngredientsModel.getAll()
+        .then(ingredients => res.status(200).json(Result.success(ingredients)))
+        .catch(err => res.status(404).json(Result.failure(err.message)))
     }
 
     static async getById(req,res)
     {
         const ingredientsID = req.params.id
         IngredientsModel.getById({id: ingredientsID})
-            .then(ingredient => res.status(200).send(ingredient))
-            .catch(err => res.status(404).json({Error: err.message}))
+            .then(ingredient => res.status(200).send(Result.success(ingredient)))
+            .catch(err => res.status(404).json(Result.failure(err.message)))
     }
 
     static async create(req, res)
     {
         IngredientsModel.create({data: req.body})
-            .then(ingredient => res.status(201).send(ingredient))
-            .catch(err => res.status(500).json({Error: err.message}))
+            .then(ingredient => res.status(201).send(Result.success(ingredient)))
+            .catch(err => res.status(400).json(Result.failure(err.message)))
     }
 
     static async delete(req, res)
     {
         const id = req.params.id
         IngredientsModel.delete({id:id})
-            .then(ingredient => res.status(204).send(ingredient))
-            .catch(err => res.status(500).json({Error: err.message}))
+            .then(() => res.sendStatus(204))
+            .catch(err => res.status(404).json(Result.failure(err.message)))
     }
 
     static async update(req, res)
@@ -39,7 +39,7 @@ export default class IngredientsController
         const updatedIngredient = req.body
 
         IngredientsModel.update({id: id,data: updatedIngredient})
-            .then(ingredient => res.status(202).send(ingredient))
-            .catch(err => res.status(500).json({Error: err.message}))
+            .then(ingredient => res.status(202).send(Result.success(ingredient)))
+            .catch(err => res.status(400).json(Result.failure(err.message)))
     }
 }

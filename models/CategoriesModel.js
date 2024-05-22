@@ -9,42 +9,46 @@ export default class CategoriesModel
 {
     static async getAll()
     {
-        return categoriesDB.find().toArray()
+        const categories = await categoriesDB.find().toArray()
+        if(categories.length < 1) throw new Error(APIerrors.NOT_FOUND.title)
+        
+        return categories
     }
 
     static async getById({id})
     {
         try {
-            return categoriesDB.findOne({_id: new ObjectId(id)})
+            const categories = await categoriesDB.findOne({_id: new ObjectId(id)})
+            if(!categories) throw new Error(APIerrors.NOT_FOUND.title)
+            return categories
        } catch (error) {
-            throw new Error(APIerrors.NOT_FOUND.title)
+            throw new Error(APIerrors.NOT_FOUND.title + ': ' + error.message)
        }
     }
 
     static async create({data})
     {
-        const newCategory = {
-        name: data.name,
-        description: data.description
-        }
+        const newCategory = CategoriesModel.#prepareData({data})
 
         try {
             const category =  await categoriesDB.insertOne(newCategory)
             newCategory._id = category.insertedId
             return newCategory
         } catch (error) {
-            throw Error(APIerrors.CREATE_FAILED.title)
+            throw Error(APIerrors.CREATE_FAILED.title + ': ' + error.message)
         }
     }
 
     static async delete({id})
     {
         try {
+            await this.getById({id})
+
             await categoriesDB.deleteOne({_id: new ObjectId(id)})
             // este return no se muestra porque el status es 204(no content)
-            return {'message': `La categoria con el id: ${id} fue eliminada exitosamente.`}
+            return APIerrors.SUCCESS_DELETE
         } catch (error) {
-            throw new Error(APIerrors.DELETE_FAILED.title)
+            throw new Error(APIerrors.DELETE_FAILED.title + ': ' + error.message)
         }
     }
 
@@ -52,9 +56,17 @@ export default class CategoriesModel
     {
         try {
             await categoriesDB.updateOne({_id: new ObjectId(id)},{$set: data})
-            return {"message": `La categoria con el id: ${id} fue actualizada correctamente.`, "newData": data}
+            return data
         } catch (error) {
-            throw new Error(APIerrors.UPDATE_FAILED.title)
+            throw new Error(APIerrors.UPDATE_FAILED.title + ': ' + error.message)
         }
+    }
+
+    static #prepareData({data})
+    {
+        return {
+            name: data.name,
+            description: data.description
+            }
     }
 }

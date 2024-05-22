@@ -1,4 +1,5 @@
 import { usersSchemaCreate , usersSchemaUpdate } from '../schemas/UsersSchema.js'
+import Result from '../services/resultsPattern.js'
 
 export default class UsersMiddleware
 {
@@ -9,7 +10,7 @@ export default class UsersMiddleware
                 req.body = user
                 next()
             } )
-            .catch(error => res.status(422).json(error.errors))
+            .catch(error => res.status(422).json(Result.failure(error.errors)))
     }
 
     static async partialValidate(req, res, next)
@@ -19,6 +20,6 @@ export default class UsersMiddleware
                 req.body = user
                 next()
             })
-            .catch(error => res.status(422).json(error.errors))
+            .catch(error => res.status(422).json(Result.failure(error.errors)))
     }
 }

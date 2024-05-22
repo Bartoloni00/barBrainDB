@@ -1,43 +1,40 @@
 import { APIerrors } from '../errors.js'
-import drinksMiddleware from '../middlewares/drinksMiddleware.js'
 import DrinksModel from '../models/DrinksModel.js'
+import Result from '../services/resultsPattern.js'
 
 export default class DrinksController
 {
     static async getAll(req, res)
     {
         let filters = req.query
-
-        const drinks = await DrinksModel.getAll(filters)
-        if(!drinks) res.status(404).json(APIerrors.NOT_FOUND)
-        res.json(drinks)
+        DrinksModel.getAll(filters)
+            .then(drinks => res.status(200).json(Result.success(drinks)))
+            .catch(err => res.status(404).json(Result.failure(err.message)))
     }
 
     static async getById(req, res)
     {
         const drinkId = req.params.id
         DrinksModel.getById({id: drinkId})
-            .then(drink => { 
-                if(!drink) res.status(404).json(APIerrors.NOT_FOUND)
-                res.status(200).send(drink)
-            })
-            .catch(err => res.status(404).json({Error: err.message}))
+            .then(drink => res.status(200).json(Result.success(drink)))
+            .catch(err => res.status(404).json(Result.failure(err.message)))
     }
     
     static async create(req, res)
     {
         let newDrink = DrinksController.#prepareRequestData(req)
+
         DrinksModel.create({data: newDrink})
-            .then(drink => res.status(200).send(drink))
-            .catch(err => res.status(500).json({Error: err.message}))
+            .then(drink => res.status(200).json(Result.success(drink)))
+            .catch(err => res.status(400).json(Result.failure(err.message)))
     }
 
     static async delete(req, res)
     {
         const id = req.params.id
         DrinksModel.delete({id:id})
-            .then(drink => res.status(204).send(drink))
-            .catch(err=> res.status(500).json({Error: err.message}))
+            .then(() => res.sendStatus(204))
+            .catch(err=> res.status(404).json(Result.failure(err.message)))
     }
     
     static async update(req, res)
@@ -45,22 +42,22 @@ export default class DrinksController
         const id = req.params.id
         const updatedDrink = DrinksController.#prepareRequestData(req)
         DrinksModel.update({id: id, data: updatedDrink})
-            .then(drink => res.status(202).send(drink))
-            .catch(err => res.status(500).json({Error: err.message}))
+            .then(drink => res.status(202).json(Result.success(drink)))
+            .catch(err => res.status(400).json(Result.failure(err.message)))
     }
 
     static async getRandom(req, res)
     {
-        const drinkRandom = await DrinksModel.getRandom()
-        if(!drinkRandom) res.status(400).json(APIerrors.NOT_FOUND)
-        res.status(200).send(drinkRandom)
+        DrinksModel.getRandom()
+            .then(drink => res.status(200).json(Result.success(drink)))
+            .catch(err => res.status(404).json(Result.failure(err.message)))
     }
 
     static async paginate(req, res)
     {
         DrinksModel.paginate(req.query)
-        .then(paginateDrinks => res.status(200).send(paginateDrinks))
-        .catch(err => res.status(400).send(err.message))
+        .then(paginateDrinks => res.status(200).json(Result.success(paginateDrinks)))
+        .catch(err => res.status(400).json(Result.failure(err.message)))
     }
 
     static #prepareRequestData(req)

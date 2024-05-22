@@ -1,21 +1,21 @@
-import { APIerrors } from '../errors.js'
 import AuthModel from '../models/AuthModel.js'
+import Result from '../services/resultsPattern.js'
 
 export default class AuthController
 {
     static async login(req, res)
     {
         AuthModel.login(req.body)
-            .then(user => res.status(200).send(user))
-            .catch(err => res.status(401).send(err.message))
+            .then(user => res.status(200).json(Result.success(user)))
+            .catch(err => res.status(401).json(Result.failure(err.message)))
     }
 
     static async logout(req, res)
     {
         const token = req.header('Auth-Token')
         AuthModel.logout({token})
-        .then(() => res.status(200).send(APIerrors.SUCCESS_LOGOUT.title))
-        .catch(err => res.status(400).send(err.message))
+        .then(() => res.sendStatus(204))
+        .catch(err => res.status(400).json(Result.failure(err.message)))
     }
 
 }

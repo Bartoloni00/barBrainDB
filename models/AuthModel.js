@@ -32,11 +32,7 @@ export default class AuthModel
     
     static async logout({token})
     {
-        try {
-            return TokenModel.delete({token})
-        } catch (error) {
-            throw new Error(error.message)
-        }
+        return TokenModel.delete({token})
     }
 
     static async isPasswordCorrect(password, passwordInDB)

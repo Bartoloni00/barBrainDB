@@ -1,4 +1,5 @@
 import { ingredientsSchemaCreate, ingredientsSchemaUpdate } from "../schemas/IngredientsSchema.js"
+import Result from "../services/resultsPattern.js"
 
 export default class IngredientsMiddleware
 {
@@ -9,7 +10,7 @@ export default class IngredientsMiddleware
                 req.body = ingredient
                 next()
             } )
-            .catch(error => res.status(500).json(error.errors))
+            .catch(error => res.status(500).json(Result.failure(error.errors)))
     }
 
     static async update(req, res, next)
@@ -19,6 +20,6 @@ export default class IngredientsMiddleware
                 req.body = ingredient
                 next()
             })
-            .catch(error => res.status(500).json(error.errors))
+            .catch(error => res.status(500).json(Result.failure(error.errors)))
     }
 }

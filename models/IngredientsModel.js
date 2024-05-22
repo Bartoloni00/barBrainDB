@@ -9,41 +9,42 @@ export default class IngredientsModel
 {
     static async getAll()
     {
-        return ingredientDB.find().toArray()
+        const ingredients = await ingredientDB.find().toArray()
+        if(ingredients.length < 1) throw new Error(APIerrors.NOT_FOUND.title)
+
+        return ingredients
     }
     
     static async getById({id})
     {
-        try {
-            return ingredientDB.findOne({_id: new ObjectId(id)})
-       } catch (error) {
-            throw new Error(APIerrors.NOT_FOUND.title)
-       }
+        const ingredient = await ingredientDB.findOne({_id: new ObjectId(id)})
+        if(!ingredient)  throw new Error(APIerrors.NOT_FOUND.title)
+    
+        return ingredient
     }
 
     static async create({data})
     {
-        const newIngredient = {
-            name: data.name,
-            category: data.category
-        }
+        const newIngredient = IngredientsModel.#prepareData({data})
+
         try {
             const ingredient = await ingredientDB.insertOne(newIngredient)
             newIngredient._id = ingredient.insertedId
             return newIngredient
         } catch (error) {
-            throw new Error(APIerrors.CREATE_FAILED.title)
+            throw new Error(APIerrors.CREATE_FAILED.title + ': ' + error.message)
         }
     }
 
     static async delete({id})
     {
         try {
+            await this.getById({id})
+            
             await ingredientDB.deleteOne({_id: new ObjectId(id)})
-            // este return no se muestra porque el status es 204(no content)
-            return {'message': `El ingrediente con el id: ${id} fue eliminado exitosamente.`}
+            return APIerrors.SUCCESS_DELETE
         } catch (error) {
-            throw new Error(APIerrors.DELETE_FAILED.title)
+            throw new Error(APIerrors.DELETE_FAILED.title + ': ' + error.message)
         }
     }
 
@@ -51,9 +52,17 @@ export default class IngredientsModel
     {
         try {
             await ingredientDB.updateOne({_id: new ObjectId(id)}, {$set: data})
-            return {"message": `Èl ingrediente con el id: ${id} fue actualizado correctamente.`, "newData": data}
+            return data
         } catch (error) {
-            throw new Error(APIerrors.UPDATE_FAILED.title)
+            throw new Error(APIerrors.UPDATE_FAILED.title + ': ' + error.message)
+        }
+    }
+
+    static #prepareData({data})
+    {
+        return {
+            name: data.name,
+            category: data.category
         }
     }
 }

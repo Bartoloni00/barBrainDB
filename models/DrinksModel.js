@@ -10,8 +10,12 @@ export default class DrinksModel
 {
     static async getAll(filters)
     {
-        let activeFilters = DrinksModel.#prepareFilters(filters)
-        return drinksDB.find(activeFilters).toArray()
+        const activeFilters = DrinksModel.#prepareFilters(filters)
+
+        const drinks = await  drinksDB.find(activeFilters).toArray()
+        if(drinks.length < 1) throw new Error(APIerrors.NOT_FOUND.title)
+
+        return drinks
     }
     
     static async paginate(query)
@@ -26,14 +30,17 @@ export default class DrinksModel
                 drinks: data
             }
         } catch (error) {
-            throw new Error(`${APIerrors.NOT_FOUND.title} | pagination`)
+            throw new Error(`${APIerrors.NOT_FOUND.title} | pagination : ${error.message}`)
         }
     }
 
     static async getById({id})
     {
         try {
-            return drinksDB.findOne({_id: new ObjectId(id)})
+            const drink = await drinksDB.findOne({_id: new ObjectId(id)})
+            if(!drink) throw new Error(APIerrors.NOT_FOUND.title)
+
+            return drink
        } catch (error) {
             throw new Error(APIerrors.NOT_FOUND.title)
        }
@@ -42,7 +49,11 @@ export default class DrinksModel
     static async getRandom()
     {
         const pipeline = [ { $sample: { size: 1 } } ]
-        return await drinksDB.aggregate(pipeline).toArray()
+        const randomDrink = await drinksDB.aggregate(pipeline).toArray()
+
+        if(randomDrink.length < 1) throw new Error(APIerrors.NOT_FOUND.title)
+        
+        return randomDrink
     }
 
     static async create({data})
@@ -60,16 +71,18 @@ export default class DrinksModel
 
     static async delete({id})
     {
+        const drinkDeleted = await drinksDB.findOne({_id: new ObjectId(id)})
+        if(!drinkDeleted) throw new Error(APIerrors.DELETE_FAILED.title + ': ' + APIerrors.NOT_FOUND.title)
+
         try {
-            const drinkDeleted = await drinksDB.findOne({_id: new ObjectId(id)})
 
             await drinksDB.deleteOne({_id: new ObjectId(id)})
 
             if (drinkDeleted.cover) await deleteFile(drinkDeleted.cover)
             // este return no se muestra porque el status es 204(no content)
-            return {'message': `El trago con el id: ${id} fue eliminado exitosamente.`}
+            return APIerrors.SUCCESS_DELETE
         } catch (error) {
-            throw new Error(APIerrors.DELETE_FAILED.title)
+            throw new Error(APIerrors.DELETE_FAILED.title + ': ' + error.message)
         }
     }
 
@@ -81,7 +94,7 @@ export default class DrinksModel
             if (drinkUpdated.cover && data.cover) await deleteFile(drinkUpdated.cover)
 
             await drinksDB.updateOne({_id: new ObjectId(id)},{$set: data})
-            return {"message": `El trago con el id: ${id} fue actualizado correctamente.`, "newData": data}
+            return data
         } catch (error) {
             throw new Error(APIerrors.UPDATE_FAILED.title)
         }

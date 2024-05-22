@@ -1,13 +1,13 @@
-import { APIerrors } from '../errors.js'
 import CategoriesModel from '../models/CategoriesModel.js'
+import Result from '../services/resultsPattern.js'
 
 export default class CategoriesController 
 {
     static async getAll(req, res)
     {
-        const categories = await CategoriesModel.getAll()
-        if(categories) return res.json(categories)
-        res.status(404).json(APIerrors.NOT_FOUND)
+        CategoriesModel.getAll()
+            .then(categories => res.status(200).json(Result.success(categories)))
+            .catch(err => res.status(404).json(Result.failure(err.message)))
     }
 
     static async getById(req, res)
@@ -16,26 +16,26 @@ export default class CategoriesController
 
         CategoriesModel.getById({id:categoryID})
             .then(category => {
-                res.status(200).send(category)
+                res.status(200).json(Result.success(category))
             })
             .catch(err => {
-                res.status(404).json({Error: err.message})
+                res.status(404).json(Result.failure(err.message))
             })
     }
 
     static async create(req, res)
     {
         CategoriesModel.create({data: req.body})
-            .then(category => res.status(200).send(category))
-            .catch(err => res.status(500).json({Error: err.message}))
+            .then(category => res.status(200).json(Result.success(category)))
+            .catch(err => res.status(500).json(Result.failure(err.message)))
     }
 
     static async delete(req, res)
     {
         const id = req.params.id
         CategoriesModel.delete({id:id})
-            .then(category => res.status(204).send(category))
-            .catch(err => res.status(500).json({Error: err.message}))
+            .then(() => res.sendStatus(204))
+            .catch(err => res.status(404).json(Result.failure(err.message)))
     }
 
     static async update(req, res)
@@ -44,7 +44,7 @@ export default class CategoriesController
         const updatedCategory = req.body
 
         CategoriesModel.update({id: id, data: updatedCategory})
-            .then(category => res.status(202).send(category))
-            .catch(err => res.status(500).json({Error: err.message}))
+            .then(category => res.status(202).json(Result.success(category)))
+            .catch(err => res.status(500).json(Result.failure(err.message)))
     }
 }

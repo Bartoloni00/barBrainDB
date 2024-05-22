@@ -17,15 +17,12 @@ export default class TokenModel
 
     static async validate({token})
     {
-        try {
+            if (!token) throw new Error(APIerrors.INVALID_TOKEN.title);
             const payload = jwt.verify(token, process.env.PRIVATE_KEY)
             const sessionActiva = await tokenDB.findOne({token, user_id: new ObjectId(payload._id)})
             if (!sessionActiva) throw new Error(APIerrors.INVALID_TOKEN.title);
 
             return payload
-        } catch (error) {
-            throw new Error(APIerrors.INVALID_TOKEN.title);
-        }
     }
 
     static async delete({token})

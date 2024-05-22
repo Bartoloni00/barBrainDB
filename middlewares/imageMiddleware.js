@@ -1,6 +1,7 @@
 import { APIerrors } from "../errors.js"
 import sharp from "sharp"
 import DrinksModel from "../models/DrinksModel.js"
+import Result from "../services/resultsPattern.js"
 
 export default class ImageMiddleware
 {
@@ -34,7 +35,7 @@ export default class ImageMiddleware
             req.file.path =  `/uploads/drinks/${imageName}`
             next()
         } catch (error) {
-            res.status(500).json(APIerrors.IMAGE_PROCESSING_ERROR)
+            res.status(400).json(Result.failure(APIerrors.IMAGE_PROCESSING_ERROR.title + ': ' + error.message))
         }
     }
 

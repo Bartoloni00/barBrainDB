@@ -12,15 +12,14 @@ export default class UsersModel
     {
         const newUser = {email, password: await UsersModel.#hashPassword(password)}
        
-        if ( await UsersModel.checkUserExists(newUser.email) ) {
-            throw new Error(APIerrors.DUPLICATE_ENTRY_ERROR.title)
-        }
+        if ( await UsersModel.checkUserExists(newUser.email) ) throw new Error(APIerrors.DUPLICATE_ENTRY_ERROR.title)
+            
         try {
             const user = await userDB.insertOne(newUser)
             newUser._id = user.insertedId
             return newUser
         } catch (error) {
-            throw new Error(APIerrors.CREATE_FAILED.title)
+            throw new Error(APIerrors.CREATE_FAILED.title + ': ' + error.message)
         }
     }
 

@@ -89,14 +89,14 @@ export default class DrinksModel
     static async update({id, data})
     {
         const drinkUpdated = await drinksDB.findOne({_id: new ObjectId(id)})
-
+        if (!drinkUpdated) throw new Error(APIerrors.UPDATE_FAILED.title + ': ' + APIerrors.NOT_FOUND.title)
         try {
             if (drinkUpdated.cover && data.cover) await deleteFile(drinkUpdated.cover)
 
             await drinksDB.updateOne({_id: new ObjectId(id)},{$set: data})
             return data
         } catch (error) {
-            throw new Error(APIerrors.UPDATE_FAILED.title)
+            throw new Error(APIerrors.UPDATE_FAILED.title + ': ' + error.message)
         }
     }
 

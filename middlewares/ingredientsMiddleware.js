@@ -10,7 +10,7 @@ export default class IngredientsMiddleware
                 req.body = ingredient
                 next()
             } )
-            .catch(error => res.status(500).json(Result.failure(error.errors)))
+            .catch(error => res.status(422).json(Result.failure(error.errors)))
     }
 
     static async update(req, res, next)
@@ -20,6 +20,6 @@ export default class IngredientsMiddleware
                 req.body = ingredient
                 next()
             })
-            .catch(error => res.status(500).json(Result.failure(error.errors)))
+            .catch(error => res.status(422).json(Result.failure(error.errors)))
     }
 }

@@ -55,6 +55,10 @@ export const APIerrors = {
         "title": "INVALID_TOKEN",
         "code": 306
     },
+    "EXPIRED_TOKEN":{
+        "title": "EXPIRED_TOKEN",
+        "code": 307
+    },
     "LOGIN_FAILED":{
         "title": "LOGIN_FAILED",
         "code": 401

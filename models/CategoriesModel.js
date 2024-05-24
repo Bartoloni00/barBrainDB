@@ -19,7 +19,7 @@ export default class CategoriesModel
     {
         try {
             const categories = await categoriesDB.findOne({_id: new ObjectId(id)})
-            if(!categories) throw new Error(APIerrors.NOT_FOUND.title)
+            if(!categories) throw new Error()
             return categories
        } catch (error) {
             throw new Error(APIerrors.NOT_FOUND.title + ': ' + error.message)
